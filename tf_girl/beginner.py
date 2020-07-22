@@ -17,32 +17,47 @@ model = tf.keras.models.Sequential([
     tf.keras.layers.Flatten(input_shape=(28, 28)),
     tf.keras.layers.Dense(128, activation='relu'),
     tf.keras.layers.Dropout(0.2),
-    tf.keras.layers.Dense(10)
+    tf.keras.layers.Dense(10, activation='softmax')
 ])
 
-predictions = model(x_train[:1]).numpy()
-logger.info(predictions)
-
-probabilities = tf.nn.softmax(predictions).numpy()
-logger.info(probabilities)
-
-loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
-
-logger.info(loss_fn(y_train[:1], predictions).numpy())
-
 model.compile(optimizer='adam',
-              loss=loss_fn,
+              loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
 model.fit(x_train, y_train, epochs=5)
+model.evaluate(x_test, y_test)
 
-model.evaluate(x_test, y_test, verbose=2)
 
-# wrap the trained model, attach the softmax to it. In order to return a probability.
-probability_model = tf.keras.Sequential([
-    model,
-    tf.keras.layers.Softmax()
-])
+# model = tf.keras.models.Sequential([
+#     tf.keras.layers.Flatten(input_shape=(28, 28)),
+#     tf.keras.layers.Dense(128, activation='relu'),
+#     tf.keras.layers.Dropout(0.2),
+#     tf.keras.layers.Dense(10)
+# ])
 
-logger.info(probability_model(x_test[:5]))
+# predictions = model(x_train[:1]).numpy()
+# logger.info(predictions)
+#
+# probabilities = tf.nn.softmax(predictions).numpy()
+# logger.info(probabilities)
+#
+# loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
+#
+# logger.info(loss_fn(y_train[:1], predictions).numpy())
+#
+# model.compile(optimizer='adam',
+#               loss=loss_fn,
+#               metrics=['accuracy'])
+#
+# model.fit(x_train, y_train, epochs=5)
+#
+# model.evaluate(x_test, y_test, verbose=2)
+#
+# # wrap the trained model, attach the softmax to it. In order to return a probability.
+# probability_model = tf.keras.Sequential([
+#     model,
+#     tf.keras.layers.Softmax()
+# ])
+#
+# logger.info(probability_model(x_test[:5]))
 
