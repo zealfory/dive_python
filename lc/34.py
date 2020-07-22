@@ -40,6 +40,14 @@ class Solution:
         return high - 1
 
 
+class Solution:
+    def searchRange(self, nums, target):
+        res = [idx for idx, i in enumerate(nums) if i == target]
+        if len(res) > 0:
+            return [res[0], res[-1]]
+        return [-1, -1]
+
+
 if __name__ == "__main__":
     nums = [5, 7, 7, 8, 8, 10]
     target = 8
