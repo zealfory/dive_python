@@ -2,7 +2,7 @@
 # @File:   34.py    
 # @Time: 2020-07-22 13:55
 # @Author: ZHANG
-# @Description: 34
+# @Description: 34[二分法]
 
 
 class Solution:
