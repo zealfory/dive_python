@@ -8,12 +8,26 @@
 class Solution:
     def intToRoman(self, num: int) -> str:
         roman_dict = {
-                      1: 'I', 4: 'IV', 5: 'V', 9: 'IX', 10: 'X',
-                      40: 'XL', 50: 'L', 90: 'XC', 100: 'C',
-                      400: 'CD', 500: 'D', 900: 'CM', 1000: 'M'
+                      1000: 'M', 900: 'CM', 500: 'D',  400: 'CD',
+                      100: 'C', 90: 'XC', 50: 'L', 40: 'XL',
+                      10: 'X', 9: 'IX', 5: 'V', 4: 'IV', 1: 'I',
                       }
+        s = ""
         while num > 0:
-            pass
+            for key, value in roman_dict.items():
+                while num >= key:
+                    num -= key
+                    s += value
+                else:
+                    continue
+        return s
+
+
+if __name__ == "__main__":
+    s = Solution()
+    print(s.intToRoman(12))
+
+
 
 
 
