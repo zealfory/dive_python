@@ -8,19 +8,33 @@
 class Solution:
     def reverseOnlyLetters(self, S: str) -> str:
         # TODO
-        tmp = list()
-        num_ind = dict()
-        for i in range(len(S)):
-            if S[i].isalpha():
-                tmp.append(S[i])
+        # tmp = list()
+        # num_ind = dict()
+        # for i in range(len(S)):
+        #     if S[i].isalpha():
+        #         tmp.append(S[i])
+        #     else:
+        #         num_ind[i] = S[i]
+        # s_reversed = list(reversed(tmp))
+        # # print(s_reversed)
+        # for k, v in num_ind.items():
+        #     s_reversed.insert(k, v)
+        # # print(s_reversed)
+        # return ''.join(s_reversed)
+
+        # 字母栈 O(N)
+        s = ""
+        # tmp = []
+        # for char in S:
+        #     if char.isalpha():
+        #         tmp.append(char)
+        tmp = [c for c in S if c.isalpha()]
+        for char in S:
+            if char.isalpha():
+                s += tmp.pop()
             else:
-                num_ind[i] = S[i]
-        s_reversed = list(reversed(tmp))
-        # print(s_reversed)
-        for k, v in num_ind.items():
-            s_reversed.insert(k, v)
-        # print(s_reversed)
-        return ''.join(s_reversed)
+                s += char
+        return s
 
 
 if __name__ == "__main__":
