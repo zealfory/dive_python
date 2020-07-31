@@ -16,12 +16,12 @@ class Solution:
         #     heap = sorted(heap, reverse=True)
         # return heap[-1]
 
-    #     heap = self._get_heap(nums)
-    #     while len(heap) > k:
-    #         heap.pop(0)
-    #         heap = self._get_heap(heap)
-    #
-    #     return heap[0]
+        # heap = self._get_heap(nums)
+        # while len(heap) > k:
+        #     heap.pop(0)
+        #     heap = self._get_heap(heap)
+        #
+        # return heap[0]
     #
     # def _get_heap(self, nums):
     #     heap = []
@@ -45,7 +45,8 @@ class Solution:
                     nums[i], nums[t] = nums[t], nums[i]
                     i = t
 
-                    # O(k):建立大小为K的最小堆， k/2-1是最后一个非叶节点，因为shift是向下调整，所以倒序从最下面出发，不然(4 32 1)->(2 34 1)->(2 14 3)->(2 14 3) 结果不对
+                    # O(k):建立大小为K的最小堆， k/2-1是最后一个非叶节点，因为shift是向下调整，所以倒序从最下面出发，
+                    # 不然(4 32 1)->(2 34 1)->(2 14 3)->(2 14 3) 结果不对
 
         for i in range(k // 2, -1, -1):
             shift(i, k)
