@@ -4,8 +4,6 @@
 # @Author: ZHANG
 # @Description: 1025
 
-import random
-
 
 class Solution:
     def divisorGame(self, N: int) -> bool:

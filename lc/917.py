@@ -22,12 +22,8 @@ class Solution:
         # # print(s_reversed)
         # return ''.join(s_reversed)
 
-        # 字母栈 O(N)
+        """字母栈 O(N)"""
         s = ""
-        # tmp = []
-        # for char in S:
-        #     if char.isalpha():
-        #         tmp.append(char)
         tmp = [c for c in S if c.isalpha()]
         for char in S:
             if char.isalpha():
