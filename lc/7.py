@@ -85,43 +85,10 @@ rev = temp;
 如果 rev == INTMAX/10，那么只要 pop>7，temp=rev⋅10+pop 就会溢出。
 当 rev 为负时可以应用类似的逻辑。
 
-C++
-class Solution {
-public:
-    int reverse(int x) {
-        int rev = 0;
-        while (x != 0) {
-            int pop = x % 10;
-            x /= 10;
-            if (rev > INT_MAX/10 || (rev == INT_MAX / 10 && pop > 7)) return 0;
-            if (rev < INT_MIN/10 || (rev == INT_MIN / 10 && pop < -8)) return 0;
-            rev = rev * 10 + pop;
-        }
-        return rev;
-    }
-};
 
-
-Java
-class Solution {
-    public int reverse(int x) {
-        int rev = 0;
-        while (x != 0) {
-            int pop = x % 10;
-            x /= 10;
-            if (rev > Integer.MAX_VALUE/10 || (rev == Integer.MAX_VALUE / 10 && pop > 7)) return 0;
-            if (rev < Integer.MIN_VALUE/10 || (rev == Integer.MIN_VALUE / 10 && pop < -8)) return 0;
-            rev = rev * 10 + pop;
-        }
-        return rev;
-    }
-}
 复杂度分析
 
 时间复杂度：O(log(x))，x 中大约有log10(x)位数字。
 空间复杂度：O(1)
 
-作者：LeetCode
-链接：https://leetcode-cn.com/problems/reverse-integer/solution/zheng-shu-fan-zhuan-by-leetcode/
-来源：力扣（LeetCode）
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"""
+"""
