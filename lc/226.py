@@ -14,12 +14,22 @@ class TreeNode:
 
 
 class Solution:
+
+    """Mine"""
     def invertTree(self, root: TreeNode) -> TreeNode:
         if not root:
             return None
-        left = self.invertTree(root.left)
-        right = self.invertTree(root.right)
-        root.left = right
-        root.right = left
+        root.left, root.right = root.right, root.left
+        self.invertTree(root.left)
+        self.invertTree(root.right)
         return root
 
+    """Official"""
+    # def invertTree(self, root):
+    #     if not root:
+    #         return None
+    #     left = self.invertTree(root.left)
+    #     right = self.invertTree(root.right)
+    #     root.left = right
+    #     root.right = left
+    #     return root
