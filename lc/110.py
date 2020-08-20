@@ -40,3 +40,17 @@ class Solution:
     #         return max(l, r) + 1
     #     return abs(getHeight(root.left) - getHeight(root.right)) <= 1 and self.isBalanced(root.left) \
     #            and self.isBalanced(root.right)
+
+def T():
+    global flag
+    flag = True
+
+    def t1():
+        global flag
+        flag = False
+        print(flag)
+
+    t1()
+    return flag
+
+print(T())
