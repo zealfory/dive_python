@@ -6,27 +6,47 @@
 
 
 class Solution:
+    # def permute(self, nums):
+    #     n = len(nums)
+    #     res = []
+    #     if n == 0:
+    #         return res
+    #     path = []
+    #     used = [False] * n
+    #     self.dfs(nums, n, 0, path, used, res)
+    #     return res
+    #
+    # def dfs(self, nums, n, depth, path, used, res):
+    #     if depth == n:
+    #         res.append(path[:])  # ps：要append list而不是引用
+    #     for i in range(n):
+    #         if used[i]:
+    #             continue
+    #         path.append(nums[i])
+    #         used[i] = True
+    #         self.dfs(nums, n, depth + 1, path, used, res)
+    #         path.pop()
+    #         used[i] = False
+
     def permute(self, nums):
         n = len(nums)
-        res = []
-        if n == 0:
-            return res
-        path = []
+        res = list()
+        combination = list()
         used = [False] * n
-        self.dfs(nums, n, 0, path, used, res)
-        return res
 
-    def dfs(self, nums, n, depth, path, used, res):
-        if depth == n:
-            res.append(path[:])  # ps：要append list而不是引用
-        for i in range(n):
-            if used[i]:
-                continue
-            path.append(nums[i])
-            used[i] = True
-            self.dfs(nums, n, depth + 1, path, used, res)
-            path.pop()
-            used[i] = False
+        def traceback(depth):
+            if depth == n:
+                res.append(combination[:])
+            for i in range(n):
+                if used[i]:
+                    continue
+                combination.append(nums[i])
+                used[i] = True
+                traceback(depth + 1)
+                combination.pop()
+                used[i] = False
+        traceback(0)
+        return res
 
 
 if __name__ == "__main__":
