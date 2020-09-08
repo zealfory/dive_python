@@ -18,7 +18,7 @@ class Solution:
         high = len(nums)
 
         while low < high:
-            mid = (low + high) // 2
+            mid = low + ((high - low) >> 1)
             if nums[mid] >= target:
                 high = mid
             else:
@@ -31,7 +31,7 @@ class Solution:
         high = len(nums)
 
         while low < high:
-            mid = (low + high) // 2
+            mid = low + ((high - low) >> 1)
             if nums[mid] > target:
                 high = mid
             else:
